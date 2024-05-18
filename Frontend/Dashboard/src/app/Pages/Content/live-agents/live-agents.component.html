@@ -1,0 +1,181 @@
+<div class="card">
+    <div class="card-body">
+<div class="page-breadcrumb d-none d-sm-flex align-items-center">
+    <h6 class="mb-0 text-uppercase text-design">Live Agent Status</h6>
+ 
+</div>
+</div>
+</div>
+
+<!-- <div class="row pt-4">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="card rainbow Status1">
+    <div class="card-body">
+  <div class="page-breadcrumb d-none d-sm-flex justify-content-center">
+    <h6 class="mb-0 text-uppercase fb">Total Agent : 2 </h6>
+  
+  </div>
+  </div>
+  </div></div>
+  <div class="col-md-4"></div>
+</div>
+<hr> -->
+<div class="row pt-4">
+  <div class="col-md-2">
+    <div class="card Status">
+      <div class="card-body">
+        <div class="page-breadcrumb d-none d-sm-flex justify-content-center">
+          <h6 class="mb-0 text-uppercase paddingcen">On Call : 2</h6>
+      <br><br>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card Status">
+      <div class="card-body">
+        <div class="page-breadcrumb d-none d-sm-flex justify-content-center">
+          <h6 class="mb-0 text-uppercase paddingcen">Wrap Up : 0</h6>
+      <br><br>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card Status">
+      <div class="card-body">
+        <div class="page-breadcrumb d-none d-sm-flex justify-content-center">
+          <h6 class="mb-0 text-uppercase paddingcen">On Break : 0</h6>
+    
+      <br><br>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card Status">
+      <div class="card-body">
+        <div class="page-breadcrumb d-none d-sm-flex justify-content-center">
+          <h6 class=" text-uppercase text-center paddingcen">Free : 0</h6>
+      <br><br>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card Status">
+      <div class="card-body">
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center">
+      <h6 class="mb-0 text-uppercase text-center">Unreachable SIP : 0</h6>
+      <br>
+      <br>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card Status">
+      <div class="card-body">
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center">
+      <h6 class="mb-0 text-uppercase text-center">Queue Calls : 0</h6>
+    <br><br>
+    </div>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+<div class="col-md-2">
+  <div class="input-group pt-4" style="width: 200px;display: flex;justify-content: end;">
+      <input type="search" aria-label="First name" class="form-control" matInput (keyup)="applyFilter($event)" #input placeholder="Search">
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+  
+  <div class="row mb-n3 table-responsive">
+  <table class="table" mat-table [dataSource]="dataSource" matSort>
+  <thead>
+  <tr>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme"> ID </th>
+      <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{i+1}}</td>
+    </ng-container>
+      <ng-container matColumnDef="camp_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme "> CAMPAIGN </th>
+          <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{row.camp_name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="employee_code">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">EMPLOYEE CODE </th>
+          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.employee_code}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="agent_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">AGENT NAME</th>
+          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.agent_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sip">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">SIP ID</th>
+          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.sip}} </td>
+        </ng-container>
+        <ng-container matColumnDef="sip_status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme "> SIP STATUS </th>
+          <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{row.sip_status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="desktop_ip">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">DESKTOP IP </th>
+          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.desktop_ip}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">STATUS</th>
+          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="customer_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">CUSTOMER NUMBER</th>
+          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.customer_number}} </td>
+        </ng-container>
+        <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme "> DURATION </th>
+          <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{row.duration}}</td>
+        </ng-container>
+        <ng-container matColumnDef="disposition">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">DISPOSITION </th>
+          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.disposition}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="force_out">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">FORCE OUT</th>
+          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.force_out}} </td>
+        </ng-container>
+
+    
+
+  <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-theme"> Action </th>
+      <td mat-cell *matCellDef="let row" class="text-theme" > 
+        <app-green-button [name]="'edit'"></app-green-button>
+        <app-close-button [name]="'delete'"></app-close-button>
+    </ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns" style="color: white !important;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4" class="text-theme">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" class="text-theme"></mat-paginator>
+
+  </div>
+  </div>
+</div>

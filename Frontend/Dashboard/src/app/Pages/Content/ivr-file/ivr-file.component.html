@@ -1,0 +1,55 @@
+
+<div class="col-md-2">
+    <div class="input-group pt-4" style="width: 200px;display: flex;justify-content: end;">
+        <input type="search" aria-label="First name" class="form-control" matInput (keyup)="applyFilter($event)" #input placeholder="Search">
+    </div>
+  </div>
+  <div class="card mt-5">
+    <div class="card-body">
+      <div class="page-breadcrumb d-none d-sm-flex align-items-center">
+        <h6 class="mb-0 text-uppercase text-design">File List</h6>
+      <div class="ms-auto">
+        <div class="btn-group">
+    
+          <button type="button" class="btn btn-light ms-1" (click)="openDialog('1000ms', '500ms')"> <i class="bx bx-plus"></i>Add File</button>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-n3 table-responsive">
+    <table class="table" mat-table [dataSource]="dataSource" matSort>
+    <thead>
+    <tr>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme"> ID </th>
+        <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{i+1}}</td>
+      </ng-container>
+        <ng-container matColumnDef="file_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme "> FILE NAME </th>
+            <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{row.tl_name}}</td>
+          </ng-container>
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">DATE UPLOADED </th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.tl_email}} </td>
+          </ng-container>
+          
+         
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" style="color: white !important;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4" class="text-theme">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </thead>
+    <tbody>
+  
+    </tbody>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" class="text-theme"></mat-paginator>
+  
+    </div>
+    
+  
+    </div>
+  
+    </div>
+  

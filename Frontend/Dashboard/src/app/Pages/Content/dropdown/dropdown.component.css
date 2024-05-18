@@ -1,0 +1,20 @@
+.text-design{
+    font-weight: 700;
+    font-size: 25px;
+}
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+/* .mdc-text-field--filled{
+    background-color: transparent !important;
+} */

@@ -1,0 +1,21 @@
+<form [formGroup]="dynamicForm" (ngSubmit)="submitForm()">
+    <div formArrayName="fields">
+      <div *ngFor="let field of fields.controls; let i = index" class="form-group">
+        <div class="row">
+            <div class="col-8">
+                <input type="text" class="form-control input-length" formControlName="name" placeholder="Enter Form Name">
+
+            </div>
+            <div class="col-4">
+                <button class="btn btn-light" (click)="removeField(i)" >Remove</button>
+
+            </div>
+        </div>
+       
+      </div>
+    </div>
+    <div class="col-md-4 mt-4 d-flex justify-content-space-around">
+        <button type="button" class="btn btn-light" (click)="addField()">Add Field</button>
+    </div>
+  
+  </form>

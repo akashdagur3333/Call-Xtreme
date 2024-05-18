@@ -1,0 +1,104 @@
+
+<div class="col-md-2">
+    <div class="input-group pt-4" style="width: 200px;display: flex;justify-content: end;">
+        <input type="search" aria-label="First name" class="form-control" matInput (keyup)="applyFilter($event)" #input placeholder="Search">
+    </div>
+  </div>
+  <div class="card mt-5">
+    <div class="card-body">
+      <div class="page-breadcrumb d-none d-sm-flex align-items-center">
+        <h6 class="mb-0 text-uppercase text-design">Agent List</h6>
+      <div class="ms-auto">
+        <div class="btn-group">
+    
+          <button type="button" class="btn btn-light ms-1" (click)="openDialog('1000ms', '500ms')"> <i class="bx bx-plus"></i>Add Agent</button>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-n3 table-responsive">
+    <table class="table" mat-table [dataSource]="dataSource" matSort>
+    <thead>
+    <tr>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme"> ID </th>
+        <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{i+1}}</td>
+      </ng-container>
+        <ng-container matColumnDef="headset">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme "> HEADSET </th>
+            <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{row.headset}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Reporting1">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">REPORTING1(TL) </th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.Reporting1}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="Reporting2">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">REPORTING2(MANAGER)</th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.Reporting2}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="agent_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">NAME</th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.agent_name}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="login_type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">LOGIN TYPE </th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.login_type}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="employee_code">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">EMP CODE</th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.employee_code}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="agent_pwd">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">PASS</th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.agent_pwd}} </td>
+          </ng-container>
+          <ng-container matColumnDef="camp_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">CAMP NAME </th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.camp_name}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="last_call_taken">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">LAST CALLS-TAKEN</th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.last_call_taken}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="mdial_status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">MANUAL DIAL</th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.mdial_status==1?'Active':'Inactive'}} </td>
+          </ng-container>
+          <ng-container matColumnDef="logged_in">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">LOGGEDIN</th>
+            <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.logged_in==1?'Active':'Inactive'}} </td>
+          </ng-container>
+  
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-theme"> Action </th>
+        <td mat-cell *matCellDef="let row" class="text-theme" > 
+          <app-green-button [name]="'edit'" (click)="editAgent(row)"></app-green-button>
+          <app-close-button [name]="'delete'" (click)="deleteAgent(row.agent_id)"></app-close-button>
+      </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" style="color: white !important;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4" class="text-theme">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </thead>
+    <tbody>
+  
+    </tbody>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" class="text-theme"></mat-paginator>
+  
+    </div>
+    
+  
+    </div>
+  
+    </div>
+  

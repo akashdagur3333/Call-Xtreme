@@ -1,0 +1,70 @@
+
+<div class="row pt-2">
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <div class="input-group pt-4" style="width: 200px;display: flex;justify-content: end;">
+            <input type="search" aria-label="First name" class="form-control" matInput (keyup)="applyFilter2($event)" #input placeholder="Search">
+        </div>
+      </div>
+      <div class="card mt-5">
+        <div class="card-body">
+          <div class="page-breadcrumb d-none d-sm-flex align-items-center">
+            <h6 class="mb-0 text-uppercase text-design">All DiDs</h6>
+          <div class="ms-auto">
+            <div class="btn-group">
+              <button type="button" class="btn btn-light ms-1" (click)="openDialog('1000ms', '500ms')" ><i class="bx bx-plus"></i>Add Single DiD</button>
+
+              <button type="button" class="btn btn-light ms-1" (click)="openDialog1('1000ms', '500ms')"><i class="bx bx-plus"></i>Add Did Range</button>
+              <button type="button" class="btn btn-light ms-1"> <i class="bx bx-plus"></i>Download All DiD</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-n3 table-responsive">
+          <table class="table" mat-table [dataSource]="dataSource2" matSort>
+            <thead>
+            <tr>
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme"> ID </th>
+                <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{i+1}}</td>
+              </ng-container>
+                <ng-container matColumnDef="did">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme "> DID </th>
+                    <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{row.did}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">STATUS </th>
+                    <td mat-cell *matCellDef="let row" class="text-theme" > 
+                      <app-green-button [name]="row.status==1?'Alloted':'Free'"></app-green-button></td>
+                  </ng-container>
+                        
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">Action </th>
+                    <td mat-cell *matCellDef="let row" class="text-theme" > 
+                      <app-close-button [name]="'Delete'" (click)="deleteDiD(row.did_id)"></app-close-button></td>
+                    </ng-container>
+          
+      
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2" style="color: white !important;"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+          
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4" class="text-theme">No data matching the filter "{{input.value}}"</td>
+              </tr>
+            </thead>
+            <tbody>
+          
+            </tbody>
+            </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" class="text-theme"></mat-paginator>
+      
+        </div>
+        
+      
+        </div>
+      
+        </div>
+    </div>
+</div>
+
+

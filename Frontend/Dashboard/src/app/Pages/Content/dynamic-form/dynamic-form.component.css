@@ -1,0 +1,42 @@
+.text-design{
+    font-weight: 700;
+    font-size: 25px;
+}
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  *{
+    background-color: transparent !important;
+    /* color: white !important; */
+    border-color: whitesmoke !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color: transparent !important; 
+}
+.whiteColor{
+       color: white !important;
+ 
+}
+.text-theme{
+    color:white;
+    white-space: nowrap;
+}
+.btn-outline-theme{
+    color:white
+}
+
+.padding-top4{
+padding-top: 30px;
+}
+

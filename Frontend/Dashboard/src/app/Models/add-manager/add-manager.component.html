@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <hr>
+            <div class="card border-top border-0 border-4 border-white">
+                <div class="card-body">
+                    <div class="card-title d-flex align-items-center">
+                        <div><i class="bx bxs-user me-1 font-22 text-white"></i>
+                        </div>
+                        <h5 class="mb-0 text-white">{{heading}}</h5>
+                    </div>
+                    <hr>
+                    <form class="row g-3" [formGroup]="managerForm">
+                        <div class="col-md-6">
+                            <label for="m_name" class="form-label">Manager Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" name="m_name" formControlName="m_name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="m_email" class="form-label">Manager Email</label>
+                            <input type="text" class="form-control" placeholder="Enter Email" name="m_email" formControlName="m_email">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="m_password" class="form-label">Manager Password</label>
+                            <input type="password" class="form-control" placeholder="Enter Password" name="m_password" formControlName="m_password">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="m_description" class="form-label">Manager Designation</label>
+                            <input type="text" class="form-control" placeholder="Enter Designation" name="m_description" formControlName="m_description">
+                        </div>
+                       
+                
+                        <div class="d-flex justify-content-center">
+                            <app-submit-button [name]="submit" class="mt-3" (click)="addManager()"></app-submit-button>
+                            <app-close-button [name]="'close'" mat-dialog-close="" [button]="fontSize"></app-close-button>   
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

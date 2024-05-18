@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <hr>
+      <div class="card border-top border-0 border-4 border-white">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-center">
+            <div><i class="bx bxs-user me-1 font-22 text-white"></i>
+            </div>
+            <h5 class="mb-0 text-white">{{heading}}</h5>
+          </div>
+          <hr>
+          <form class="row g-3" [formGroup]="agentForm">
+            <div class="col-md-4">
+              <label for="agent_name" class="form-label">Agent Name</label>
+              <input type="text" class="form-control" placeholder="Enter Name" name="agent_name" formControlName="agent_name">
+            </div>
+            <div class="col-md-4">
+              <label for="agent_pwd" class="form-label">Agent Password</label>
+              <input type="text" class="form-control" placeholder="Enter Passwrod" name="agent_pwd"
+                formControlName="agent_pwd">
+            </div>
+            <div class="col-md-4">
+              <label for="agentType" class="form-label">Agent Type</label>
+              <select id="inputState" class="form-select" name="agentType" formControlName="agentType">
+                <option value="0">Sip</option>
+                <option value="1">Mobile</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="mobile_no" class="form-label">Mobile No</label>
+              <input type="number" class="form-control" placeholder="Enter Mobile Number" name="mobile_no"
+                formControlName="mobile_no">
+            </div>
+
+
+
+            <div class="col-md-4">
+              <label for="login_type" class="form-label">Login Type</label>
+              <select id="camp_type" class="form-select" name="login_type" (change)="CampaignType($event)"
+                formControlName="login_type">
+                <option value="Inbound">Inbound</option>
+                <option value="Outbound">Outbound</option>
+                <option value="Blended">Blended</option>
+              </select>
+
+            </div>
+
+
+            <div class="col-md-4" *ngIf="camp">
+              <label for="camp_name" class="form-label">Select Campaign</label>
+              <select id="camp_name" class="form-select" name="camp_name" formControlName="camp_name">
+                <option *ngFor="let c of camp" value="{{c.c_id}}">{{c.camp_name}}</option>
+              </select>
+            </div>
+
+
+
+            <div class="col-md-4">
+              <label for="employee_code" class="form-label">Employee Code</label>
+              <input type="text" class="form-control" placeholder="Enter Employee Code" name="employee_code"
+                formControlName="employee_code">
+            </div>
+            <div class="col-md-4">
+              <label for="hold_time" class="form-label">Wrap Up Time</label>
+
+              <select id="inputState" class="form-select" name="hold_time" formControlName="hold_time">
+                <option value="30">30 Sec</option>
+                <option value="45">45 Sec</option>
+                <option value="60">60 Sec</option>
+                <option value="90">90 Sec</option>
+                <option value="120">120 Sec</option>
+                <option value="150">150 Sec</option>
+                <option value="180">180 Sec</option>
+                <option value="200">200 Sec</option>
+
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="headset" class="form-label">HeadSet</label>
+              <input type="text" class="form-control" placeholder="Enter Headset" name="headset"
+                formControlName="headset">
+            </div>
+            <div class="col-md-4">
+              <label for="tl_name" class="form-label">Reporting1(TL)</label>
+              <select id="Reporting1" class="form-select" name="Reporting1" formControlName="Reporting1">
+                <option *ngFor="let t of tl" value="{{t.tl_id}}">{{t.tl_name}}</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="Reporting2" class="form-label">Reporting2(Manager)</label>
+
+              <select id="inputState" class="form-select" name="Reporting2" formControlName="Reporting2">
+                <option *ngFor="let m of manager" value="{{m.m_id}}">{{m.m_name}}</option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status" formControlName="status" [checked]="status">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Status</label>
+                  </div>
+
+                </div>
+                <div class="col-md-2">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="mdial_status" formControlName="mdial_status" [checked]="manualDial">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Manual Dial</label>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="d-flex justify-content-center">
+              <app-submit-button [name]="submit" class="mt-3" (click)="addAgent()"></app-submit-button>
+              <app-close-button [name]="'close'" mat-dialog-close="" [button]="fontSize"></app-close-button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

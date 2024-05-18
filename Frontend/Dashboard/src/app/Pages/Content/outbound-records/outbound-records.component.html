@@ -1,0 +1,130 @@
+<div class="card">
+  <div class="card-body">
+<div class="page-breadcrumb d-none d-sm-flex align-items-center">
+  <h6 class="mb-0 text-uppercase text-design">Outgoing Records</h6>
+
+</div>
+</div>
+</div>
+<hr>
+<div class="card mt-4" *ngIf="isExport" [@fadeInOut]="animationState" class="anim">
+           
+  <div class="card-body">
+
+            <form class="row g-3">
+              <div class="col-md-2">
+                <label for="inputFirstName" class="form-label">Date Start</label>
+                <input type="date" class="form-control" placeholder="Enter User Designation" name="callDisposition">
+            </div>
+            <div class="col-md-2">
+              <label for="inputFirstName" class="form-label">Date End</label>
+              <input type="date" class="form-control" placeholder="Enter User Designation" name="callDisposition">
+          </div>
+          <div class="col-md-2">
+            <label for="inputFirstName" class="form-label">Campaign</label>
+            <input type="date" class="form-control" placeholder="Enter User Designation" name="callDisposition">
+        </div>
+
+              <div class="col-md-2">
+                  <label for="inputState" class="form-label">Base</label>
+                  <select  name="campaign" class="form-select">
+                      <option [selected]="true" disabled>Select</option>
+                      <option>...</option>
+                  </select>
+              </div>
+              <div class="col-md-2">
+                <label for="inputState" class="form-label">Select Campaign</label>
+                <select  name="campaign" class="form-select">
+                    <option [selected]="true" disabled>Select</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="col-md-2" style="padding-top: 21px;">
+              <app-submit-button [name]="'Export'"></app-submit-button>
+
+            </div>
+     
+    
+             
+
+          </form>
+          </div>
+           
+       
+      </div>
+  
+<hr>
+<div class="card mt-4">     
+    <div class="card-body">
+      <div class="table-responsive">
+        <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center">
+              <div class="ms-auto">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-light ms-1"><i class="bx bx-plus"></i>Complete Records</button>
+                  <button type="button" (click)="checkExport()" class="btn btn-light ms-1"><i class="bx bx-plus"></i>Bulk Export(CSV)</button>
+
+                </div>
+              </div>
+            </div>
+                <hr>
+                
+<div class="col-md-2">
+  <div class="input-group pt-4" style="width: 200px;display: flex;justify-content: end;">
+      <input type="search" aria-label="First name" class="form-control" matInput (keyup)="applyFilter($event)" #input placeholder="Search">
+  </div>
+</div>
+                <div class="row mb-n3 table-responsive">
+                  <table class="table" mat-table [dataSource]="dataSource" matSort>
+                  <thead>
+                  <tr>
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme"> ID </th>
+                      <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{i+1}}</td>
+                    </ng-container>
+                      <ng-container matColumnDef="tl_name">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="text-theme "> TL NAME </th>
+                          <td mat-cell *matCellDef="let row;let i=index" scope="row"class="text-theme padding-top4"> {{row.tl_name}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="tl_email">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">TL EMAIL </th>
+                          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.tl_email}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="tl_password">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">TL PASS</th>
+                          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.tl_password}} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="tl_description">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"class="text-theme">TL DESTINATION</th>
+                          <td mat-cell *matCellDef="let row" scope="row"class="text-theme padding-top4"> {{row.tl_description}} </td>
+                        </ng-container>
+                
+                      
+                
+                  <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-theme"> Action </th>
+                      <td mat-cell *matCellDef="let row" class="text-theme" > 
+                        <app-green-button [name]="'edit'"></app-green-button>
+                        <app-close-button [name]="'delete'"></app-close-button>
+                    </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" style="color: white !important;"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                
+                  <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell" colspan="4" class="text-theme">No data matching the filter "{{input.value}}"</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                
+                  </tbody>
+                  </table>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" class="text-theme"></mat-paginator>
+                
+                  </div>
+        </div>
+      </div>
+    </div>
+  </div>
